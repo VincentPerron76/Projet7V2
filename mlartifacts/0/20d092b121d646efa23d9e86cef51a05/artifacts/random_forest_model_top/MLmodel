@@ -1,0 +1,45 @@
+artifact_path: random_forest_model_top
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.2
+mlflow_version: 2.17.2
+model_size_bytes: 3548508
+model_uuid: 30a654e45cb6419d97bc2d5b336fbc34
+run_id: 20d092b121d646efa23d9e86cef51a05
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "EXT_SOURCE_2", "required": true}, {"type":
+    "double", "name": "EXT_SOURCE_3", "required": true}, {"type": "double", "name":
+    "DAYS_EMPLOYED", "required": true}, {"type": "double", "name": "EXT_SOURCE_1",
+    "required": false}, {"type": "double", "name": "DAYS_BIRTH", "required": true},
+    {"type": "double", "name": "DAYS_EMPLOYED_PERC", "required": true}, {"type": "double",
+    "name": "BURO_DAYS_CREDIT_MEAN", "required": true}, {"type": "double", "name":
+    "PAYMENT_RATE", "required": true}, {"type": "double", "name": "BURO_DAYS_CREDIT_UPDATE_MEAN",
+    "required": true}, {"type": "double", "name": "ACTIVE_DAYS_CREDIT_MAX", "required":
+    true}, {"type": "double", "name": "AMT_ANNUITY", "required": true}, {"type": "double",
+    "name": "AMT_CREDIT", "required": true}, {"type": "double", "name": "DAYS_ID_PUBLISH",
+    "required": true}, {"type": "double", "name": "BURO_DAYS_CREDIT_MAX", "required":
+    true}, {"type": "double", "name": "DAYS_REGISTRATION", "required": true}, {"type":
+    "double", "name": "INSTAL_AMT_PAYMENT_MIN", "required": true}, {"type": "double",
+    "name": "PREV_APP_CREDIT_PERC_MEAN", "required": true}, {"type": "double", "name":
+    "CLOSED_DAYS_CREDIT_UPDATE_MEAN", "required": true}, {"type": "double", "name":
+    "DAYS_LAST_PHONE_CHANGE", "required": true}, {"type": "double", "name": "CLOSED_DAYS_CREDIT_MIN",
+    "required": true}]'
+  outputs: '[{"type": "long", "required": true}]'
+  params: null
+utc_time_created: '2024-12-03 15:07:37.978589'
