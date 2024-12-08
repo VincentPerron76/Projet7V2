@@ -3,3 +3,4 @@
 mlruns/
 projet7v2.ipynb
 /mlartifacts
+*.csv
