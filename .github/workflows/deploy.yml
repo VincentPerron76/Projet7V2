@@ -38,7 +38,10 @@ jobs:
           echo "Configuring Heroku remote..."
           git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/projet7-perron-app.git
 
-      - name: Deploy to Heroku
+      - name: Unshallow the repository
+        run: git fetch --all --unshallow
+
+      - name: Push to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
