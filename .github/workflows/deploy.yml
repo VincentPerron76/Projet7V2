@@ -21,10 +21,10 @@ jobs:
           python-version: '3.11'
 
 
-      - name: Install distutils
+      - name: Install dependencies system
         run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-dev
+          chmod +x setup.sh  # Donner les permissions d'exécution
+          ./setup.sh         # Exécuter le script setup.sh
 
 
       - name: Install dependencies
