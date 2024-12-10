@@ -4,3 +4,4 @@ mlruns/
 projet7v2.ipynb
 /mlartifacts
 *.csv
+feature_importances_with_type.csv

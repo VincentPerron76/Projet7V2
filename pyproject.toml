@@ -20,6 +20,7 @@ ipywidgets = "^8.1.5"
 h2o = "^3.46.0.6"
 tdqm = "^0.0.1"
 shape = "^0.1.1"
+streamlit = "^1.40.2"
 
 
 [build-system]
