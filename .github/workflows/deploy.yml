@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Clonage complet du dépôt
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -38,8 +40,6 @@ jobs:
           echo "Configuring Heroku remote..."
           git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/projet7-perron-app.git
 
-      - name: Unshallow the repository
-        run: git fetch --all --unshallow
 
       - name: Push to Heroku
         env:
