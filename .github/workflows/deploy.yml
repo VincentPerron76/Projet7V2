@@ -34,5 +34,5 @@ jobs:
         run: |
           echo "Logging into Heroku..."
           echo $HEROKU_API_KEY | heroku auth:token
-          heroku git:remote -a votre-app-heroku
+          heroku git:remote -a projet7-perron-app
           git push heroku main
