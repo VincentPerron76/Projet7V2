@@ -33,10 +33,10 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku auth:token
 
-      - name: Set Heroku remote
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku git:remote -a projet7-perron-app
+       name: Set Heroku remote
+        run: |
+          echo "Configuring Heroku remote..."
+          git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/projet7-perron-app.git
 
       - name: Deploy to Heroku
         env:
