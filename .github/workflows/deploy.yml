@@ -26,20 +26,22 @@ jobs:
       - name: Install Heroku CLI
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
-          echo 'Heroku CLI installed'
+          echo 'heroku-cli installed'
 
       - name: Heroku Authentication
-        run: echo ${{ secrets.HEROKU_API_KEY }} | heroku auth:token
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku auth:token
 
       - name: Set Heroku remote
-        run: |
-          echo "Configuring Heroku remote..."
-          git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/projet7-perron-app.git
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku git:remote -a projet7-perron-app
 
-      - name: Verify Git remotes
-        run: git remote -v
-
-      - name: Push to Heroku
+      - name: Deploy to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
           echo "Deploying to Heroku..."
           git push heroku main
+
