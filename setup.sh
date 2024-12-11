@@ -4,7 +4,8 @@
 sudo apt-get update
 
 # Installation de python3-distutils
-sudo apt install python3.7-dev
+
+sudo apt-get install -y python3-distutils
 pip install setuptools
 
 # Autres dépendances système que vous pourriez avoir besoin d'ajouter
