@@ -1,56 +1,51 @@
-# Importer les bibliothèques nécessaires
 from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
 import os
 
-
-
 # Charger le pipeline de production
 pipeline = joblib.load("artifacts/production_pipeline.joblib")
 
-# Charger les données des clients (exemple d'un fichier CSV)
+# Charger les donnees des clients (exemple d'un fichier CSV)
 client_data = pd.read_csv("artifacts/testclient.csv", index_col="SK_ID_CURR")
 
-
-# Créer une instance Flask
+# Creer une instance Flask
 app = Flask(__name__)
 
-# Route pour vérifier que l'API fonctionne
+# Route pour verifier que l'API fonctionne
 @app.route("/", methods=["GET"])
 def home():
-    return "Bienvenue sur l'API de prédiction ! Utilisez /predict pour obtenir des résultats."
-
+    return "Bienvenue sur l'API de prediction ! Utilisez /predict pour obtenir des resultats."
 
 @app.route("/bonjour", methods=["GET"])
 def bonjour():
     SK_ID_CURR = request.args.get('SK_ID_CURR')
-    return f"vous avez demandé l'identifiant {SK_ID_CURR}"
+    return f"vous avez demande l'identifiant {SK_ID_CURR}"
 
-# Route pour prédire à partir d'un identifiant client
+# Route pour predire a partir d'un identifiant client
 @app.route("/predict", methods=["GET"])
 def predict():
     try:
-        # Récupérer l'identifiant du client depuis les paramètres de l'URL
-        SK_ID_CURR = request.args.get("SK_ID_CURR")  # Récupérer le paramètre SK_ID_CURR
+        # Recuperer l'identifiant du client depuis les parametres de l'URL
+        SK_ID_CURR = request.args.get("SK_ID_CURR")  # Recuperer le parametre SK_ID_CURR
 
-        # Vérifier si l'identifiant est fourni
+        # Verifier si l'identifiant est fourni
         if SK_ID_CURR is None:
-            return jsonify({"error": "SK_ID_CURR est requis en tant que paramètre GET."}), 400
+            return jsonify({"error": "SK_ID_CURR est requis en tant que parametre GET."}), 400
 
-        # Vérifier si l'identifiant du client existe dans les données
+        # Verifier si l'identifiant du client existe dans les donnees
         if int(SK_ID_CURR) not in client_data.index:
             return jsonify({"error": f"Client avec id {SK_ID_CURR} introuvable."}), 404
 
-        # Extraire les données pour ce client
+        # Extraire les donnees pour ce client
         input_data = client_data.loc[[int(SK_ID_CURR)]]
 
-        # Faire la prédiction
+        # Faire la prediction
         probabilities = pipeline.predict_proba(input_data)[:, 1]
         seuil_personnalise = 0.30
         predictions = (probabilities >= seuil_personnalise).astype(int)
 
-        # Retourner les résultats sous forme de JSON
+        # Retourner les resultats sous forme de JSON
         response = {
             "SK_ID_CURR": SK_ID_CURR,
             "prediction": int(predictions[0]),
@@ -61,12 +56,6 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-# Lancer l'application Flask sur le port 5001
-
-
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5001)) 
-    app.run(host='0.0.0.0',debug=True, port=5001)
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host='0.0.0.0', debug=True, port=port) # Ajout de port=port ici pour utiliser la variable port
