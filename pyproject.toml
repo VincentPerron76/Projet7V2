@@ -25,6 +25,7 @@ pydantic = "^1.10.13"
 typing-extensions = "^4.5.0"
 evidently = "0.4.0"
 numpy = "1.25.0"
+shap = "^0.46.0"
 
 
 [build-system]

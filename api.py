@@ -42,7 +42,7 @@ def predict():
 
         # Faire la prediction
         probabilities = pipeline.predict_proba(input_data)[:, 1]
-        seuil_personnalise = 0.30
+        seuil_personnalise = 0.20
         predictions = (probabilities >= seuil_personnalise).astype(int)
 
         # Retourner les resultats sous forme de JSON
