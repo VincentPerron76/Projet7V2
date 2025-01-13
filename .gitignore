@@ -6,3 +6,4 @@ projet7v2.ipynb
 *.csv
 feature_importances_with_type.csv
 !!testclient.csv
+*.png
