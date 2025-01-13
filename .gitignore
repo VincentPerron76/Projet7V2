@@ -1,10 +1,21 @@
+# Ignorer le répertoire mlruns
 /mlruns
+
+# Ignorer le fichier projet7v2.ipynb
 /projet7v2.ipynb
-mlruns/
-projet7v2.ipynb
+
+# Ignorer mlartifacts
 /mlartifacts
+
+# Ignorer tous les fichiers CSV
 *.csv
-feature_importances_with_type.csv
-!!testclient.csv
+
+# Ne pas ignorer ces fichiers spécifiques
+!feature_importances_with_type.csv
+!df_data_test_unit_non_scalées.csv
+
+# Ignorer tous les fichiers PNG
 *.png
-!!df_data_test_unit_non_scalées.csv
+
+# Ne pas ignorer ce fichier spécifique
+!testclient.csv
