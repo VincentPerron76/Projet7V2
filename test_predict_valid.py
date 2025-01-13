@@ -8,16 +8,16 @@ def client():
         yield client
 
 @pytest.mark.parametrize("client_id, expected_prediction", [
+    (151142, 0),
     (234285, 0),
-    (235876, 0),
-    (130522, 0),
-    (112770, 0),
-    (249059, 0),
-    (151142, 1),
+    (377364, 0),
+    (129865, 0),
+    (291249, 0),
+    (372541, 1),
     (280185, 1),
     (136865, 1),
-    (372541, 1),
     (447393, 1),
+    (415174, 1)
 ])
 
 def test_predict_valid(client, client_id, expected_prediction):

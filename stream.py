@@ -25,11 +25,7 @@ if st.button("Obtenir la prédiction"):
         # Affichage du résultat
         st.write("Résultat de l'API :")
         st.json(result) # Affiche le JSON formaté pour une meilleure lisibilité.
-        # ou pour un affichage plus personnalisé :
-        #if "prediction" in result:
-        #    st.write("Prédiction :", result["prediction"])
-        #if "probability" in result:
-        #    st.write("Probabilité :", result["probability"])
+       
 
     except requests.exceptions.RequestException as e:
         st.error(f"Erreur lors de la requête à l'API : {e}")
