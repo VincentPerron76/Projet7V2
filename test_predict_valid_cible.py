@@ -2,9 +2,9 @@ import joblib
 import pandas as pd
 
 pipeline = joblib.load("artifacts/production_pipeline.joblib")
-client_data = pd.read_csv("artifacts/testclient.csv", index_col="SK_ID_CURR")
+client_data = pd.read_csv("df_data_test_unit_non_scalées.csv", index_col="SK_ID_CURR")
 
-client_ids_to_test = [235876,  235876,  130522,  112770, 249059, 151142,  280185,  136865, 372541,447393]
+client_ids_to_test = [151142, 234285, 377364, 129865, 291249, 280185, 136865, 372541, 447393, 415174]
 
 for client_id in client_ids_to_test:
     if client_id in client_data.index:
