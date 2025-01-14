@@ -3,12 +3,18 @@ import joblib
 import pandas as pd
 import os
 
-# Charger le pipeline de production avec un chemin relatif correct
-pipeline_path = os.path.join("..", "artifacts", "production_pipeline.joblib")  # Remonter d'un niveau et accéder à 'artifacts'
+# Afficher le répertoire de travail actuel pour le débogage
+print("Répertoire actuel :", os.getcwd())
+
+# Définir le répertoire de base
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Charger le pipeline avec un chemin absolu
+pipeline_path = os.path.join(base_dir, "artifacts", "production_pipeline.joblib")
 pipeline = joblib.load(pipeline_path)
 
-# Charger les données des clients à tester
-client_data_path = os.path.join("..", "data", "test_client.csv")  # Remonter d'un niveau et accéder à 'data'
+# Charger les données des clients avec un chemin absolu
+client_data_path = os.path.join(base_dir, "data", "test_client.csv")
 client_data = pd.read_csv(client_data_path, index_col="SK_ID_CURR")
 
 # Creer une instance Flask
