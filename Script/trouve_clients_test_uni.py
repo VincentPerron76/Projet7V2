@@ -20,7 +20,7 @@ clients_classe_1 = client_data.index[probabilities >= 0.14]
 
 # Sélectionner 5 clients dans chaque catégorie
 clients_classe_0_to_test = clients_classe_0[:5]
-clients_classe_1_to_test = clients_classe_1[:5]
+clients_classe_1_to_test = clients_classe_1[:6]
 
 # Combiner les deux groupes pour obtenir les 10 clients à tester
 client_ids_to_test = list(clients_classe_0_to_test) + list(clients_classe_1_to_test)
