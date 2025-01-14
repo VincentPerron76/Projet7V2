@@ -9,12 +9,12 @@ print("Répertoire actuel :", os.getcwd())
 # Définir le répertoire de base
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Charger le pipeline avec un chemin absolu
-pipeline_path = os.path.join(base_dir, "artifacts", "production_pipeline.joblib")
+# Utiliser un chemin relatif pour accéder à 'artifacts' (remonter d'un niveau depuis 'Script')
+pipeline_path = os.path.join(base_dir, "..", "artifacts", "production_pipeline.joblib")
 pipeline = joblib.load(pipeline_path)
 
 # Charger les données des clients avec un chemin absolu
-client_data_path = os.path.join(base_dir, "data", "test_client.csv")
+client_data_path = os.path.join(base_dir,"..", "data", "test_client.csv")
 client_data = pd.read_csv(client_data_path, index_col="SK_ID_CURR")
 
 # Creer une instance Flask
