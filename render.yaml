@@ -1,9 +1,0 @@
-services:
-  - name: prediction_api
-    type: web
-    runtime: python
-    build:
-      cmds:
-        - pip install -r requirementV2.txt # Installation des dépendances
-        - pytest # Exécution des tests pytest
-    startCommand: gunicorn app:app # Commande pour démarrer l'application
