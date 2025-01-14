@@ -1,8 +1,14 @@
 import joblib
 import pandas as pd
 
-pipeline = joblib.load("artifacts/production_pipeline.joblib")
-client_data = pd.read_csv("df_data_test_unit_non_scalées.csv", index_col="SK_ID_CURR")
+
+# Charger le pipeline de production avec un chemin relatif correct
+pipeline_path = os.path.join("..", "artifacts", "production_pipeline.joblib")  # Remonter d'un niveau et accéder à 'artifacts'
+pipeline = joblib.load(pipeline_path)
+
+# Charger les données des clients à tester
+client_data_path = os.path.join("..", "data", "test_client.csv")  # Remonter d'un niveau et accéder à 'data'
+client_data = pd.read_csv(client_data_path, index_col="SK_ID_CURR")
 
 client_ids_to_test = [241603, 350714, 211868, 268880, 305344, 180213, 398182, 443859, 259596,187836]
 
