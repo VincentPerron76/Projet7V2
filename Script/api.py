@@ -3,19 +3,13 @@ import joblib
 import pandas as pd
 import os
 
-# Afficher le répertoire de travail actuel pour le débogage
-print("Répertoire actuel :", os.getcwd())
-
-# Définir le répertoire de base
-base_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Utiliser un chemin relatif pour accéder à 'artifacts' (remonter d'un niveau depuis 'Script')
-pipeline_path = os.path.join(base_dir, "..", "artifacts", "production_pipeline.joblib")
+# Spécification des chemins absolus en dur
+pipeline_path = "/opt/render/project/src/artifacts/production_pipeline.joblib"
 print(f"Chargement du pipeline depuis : {pipeline_path}")
 pipeline = joblib.load(pipeline_path)
 
-# Utiliser un chemin relatif pour accéder à 'data' (remonter d'un niveau depuis 'Script')
-client_data_path = os.path.join(base_dir, "..", "data", "test_client.csv")
+# Spécification du chemin absolu pour les données des clients
+client_data_path = "/opt/render/project/src/data/test_client.csv"
 print(f"Chargement des données des clients depuis : {client_data_path}")
 client_data = pd.read_csv(client_data_path, index_col="SK_ID_CURR")
 
