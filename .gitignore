@@ -12,10 +12,10 @@
 
 # Ne pas ignorer ces fichiers spécifiques
 !feature_importances_with_type.csv
-!df_data_test_unit_non_scalées.csv
+
 
 # Ignorer tous les fichiers PNG
 *.png
 
 # Ne pas ignorer ce fichier spécifique
-!testclient.csv
+!test_client.csv
