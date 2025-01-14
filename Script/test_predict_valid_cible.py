@@ -2,14 +2,21 @@ import joblib
 import pandas as pd
 import os
 
+# Afficher le répertoire de travail actuel pour le débogage
+print("Répertoire actuel :", os.getcwd())
 
-# Charger le pipeline de production avec un chemin relatif correct
-pipeline_path = os.path.join("..", "artifacts", "production_pipeline.joblib")  # Remonter d'un niveau et accéder à 'artifacts'
+# Définir le répertoire de base
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+# Utiliser un chemin relatif pour accéder à 'artifacts' (remonter d'un niveau depuis 'Script')
+pipeline_path = os.path.join(base_dir, "..", "artifacts", "production_pipeline.joblib")
 pipeline = joblib.load(pipeline_path)
 
-# Charger les données des clients à tester
-client_data_path = os.path.join("..", "data", "test_client.csv")  # Remonter d'un niveau et accéder à 'data'
+# Charger les données des clients avec un chemin absolu
+client_data_path = os.path.join(base_dir,"..", "data", "test_client.csv")
 client_data = pd.read_csv(client_data_path, index_col="SK_ID_CURR")
+
 
 client_ids_to_test = [241603, 350714, 211868, 268880, 305344, 180213, 398182, 443859, 259596,187836]
 
