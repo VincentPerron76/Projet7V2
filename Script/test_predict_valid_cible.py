@@ -1,5 +1,6 @@
 import joblib
 import pandas as pd
+import os
 
 
 # Charger le pipeline de production avec un chemin relatif correct
