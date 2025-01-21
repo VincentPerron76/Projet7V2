@@ -12,9 +12,7 @@
 
 # Ne pas ignorer ces fichiers spécifiques
 !feature_importances_with_type.csv
-!apidash.py
-!Dashboard.py
-!apidashtest.py
+
 
 
 # Ignorer tous les fichiers PNG
@@ -22,3 +20,8 @@
 
 # Ne pas ignorer ce fichier spécifique
 !test_client.csv
+
+# Ignorer Fichier Projet8 DashBoard
+apidash.py
+Dashboard.py
+apidashtest.py
