@@ -6,8 +6,11 @@ import numpy as np
 import shap  # Import manquant pour les graphiques SHAP
 
 # Définition de l'URL de l'API
-API_URL = "http://localhost:5001/predict"
-API_URL2 = "http://localhost:5001/dataset"
+#API_URL = "http://localhost:5001/predict"
+#API_URL2 = "http://localhost:5001/dataset"
+
+API_URL = "https://projet7v2.onrender.com/predict"
+API_URL2 = "https://projet7v2.onrender.com/dataset"
 
 # Définition des couleurs accessibles (respect WCAG)
 COLOR_POSITIVE = "#F98B24"  # orange accessible
