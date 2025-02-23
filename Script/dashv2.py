@@ -62,7 +62,7 @@ if st.button("🔄 Réinitialiser le Dashboard", help="Cliquez pour réinitialis
     st.session_state.SK_ID_CURR_REF = None  # Réinitialise l'ID client de référence
     st.session_state.top_features = None  # Réinitialise les contributeurs SHAP affichés
     st.session_state["SK_ID_CURR_input"] = ""  # Réinitialiser explicitement le champ de saisie
-    st.session_state["SK_ID_CURR_REF"] = "" # Réinitialiser explicitement le champ de saisie du client référence
+    st.session_state["SK_ID_CURR_REF_input"] = "" # Réinitialiser explicitement le champ de saisie du client référence
 
     # Relancer l'application pour obtenir une page vierge
     st.rerun()
