@@ -53,6 +53,13 @@ st.title("Prédiction de Crédit")
 
 # Bouton pour réinitialiser le dashboard avec un style accessible
 if st.button("🔄 Réinitialiser le Dashboard", help="Cliquez pour réinitialiser le tableau de bord"):
+    
+     # Supprimer les clés avant réinitialisation
+    for key in ["client_ref_input", "SK_ID_CURR", "SK_ID_CURR_REF"]:
+        if key in st.session_state:
+            del st.session_state[key]
+     
+    
     # Réinitialisation des variables dans session_state
     st.session_state.dataset = None  # Efface le dataset
     st.session_state.scatter_fig = None  # Efface le graphique du scatter plot
@@ -191,8 +198,12 @@ if "scatter_fig" not in st.session_state:
     st.session_state.scatter_fig = None
 
 
+
 if st.session_state.dataset is not None and not st.session_state.dataset.empty:
     st.subheader("Positionnement du client")
+
+
+    options = [""] + list(st.session_state.dataset.columns)
 
     feature_x = st.selectbox(
     "Sélectionnez la première caractéristique",
@@ -243,14 +254,20 @@ if st.session_state.scatter_fig is not None:
 
 
 # ----------- PARTIE 4 : Comparaison avec client de référence -----------
+
+# Vérifier si la variable existe dans session_state, sinon l'initialiser
+if "client_ref_input" not in st.session_state:
+    st.session_state.client_ref_input = ""
+
+
+
 # Entrée utilisateur pour l'ID du client de référence
 SK_ID_CURR_REF = st.text_input(
     "Entrez l'ID du client de référence :", value="", key="client_ref_input",
     help="Veuillez saisir l'ID du client Référence associé au client choisi pour l'étude"
             )
 
-# Stocker la valeur dans session_state pour éviter qu'elle soit perdue
-st.session_state["SK_ID_CURR_REF"] = SK_ID_CURR_REF  
+
 
 if SK_ID_CURR_REF:
     try:
