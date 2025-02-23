@@ -7,7 +7,7 @@ lightgbm>=4.5.0
 pytest==8.3.4
 requests==2.32.3
 streamlit==1.40.2
-
+shap==0.46.0
 
 
   
